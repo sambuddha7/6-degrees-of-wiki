@@ -10,7 +10,7 @@
 #include <set>
 using namespace std;
 
-vector<vector<string>> file_to_vector(const std::string & filename);
+vector<vector<string> > file_to_vector(const std::string & filename);
 
 std::string file_to_string(const std::string & filename);
 std::string TrimRight(const std::string & str);
