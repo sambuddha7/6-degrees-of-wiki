@@ -1,6 +1,7 @@
 #include <iostream>
 #include <queue>
 #include<list>
+#include <vector>
 using namespace std;
 
 
@@ -32,7 +33,7 @@ public:
         this->end = end;
     }
 
-    void findPath() {
+    vector<char> findPath() {
 
         queue<Node*> Queue;
         bool reached_end = false;
@@ -63,11 +64,11 @@ public:
                 }
             }
         }
-        trace_route();
+        return trace_route();
     }
 
     //Function to trace back route
-    void trace_route() {
+    vector<char> trace_route() {
         list<Node*> route;
         Node* node = end;
         //start.prev is always null 
@@ -78,11 +79,14 @@ public:
             node = node->prev;
         }
         //Display the spaning  and shortest path
-        cout << "Shortest Path Between Nodes is" << endl;
+        // cout << "Shortest Path Between Nodes is" << endl;
+        vector<char> to_return;
         for (Node* n : route) {
-            cout << n->name << " ";
+            // cout << n->name << " ";
+            to_return.push_back(n->name);
         }
+        return to_return;
     }
-   
+    
 
 };
