@@ -1,5 +1,5 @@
-# Project Summary
-# Contributors
+
+## Contributors
 Sambuddha Biswas and Mia Erdenebileg
 
 # Overview
