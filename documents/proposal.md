@@ -8,11 +8,8 @@ Breadth first search from start to end.
 Time complexity: O(n), Space requirement: O(n)  
 Inputs: directed unweighted graph, start node, end node.  
 Outputs: A set of equal length shortest paths from the start to the end page.  
-2. **To find the span of the graph:**  
-For each node run BFS and return longest. Return max over the nodes.  
-Time complexity: O(n^2), Space requirement O(n)  
-Inputs: directed unweighted graph  
-3. **For finding betweenness centrality: **  
+ 
+2. **For finding betweenness centrality: **  
 **Fast Approximate Betweenness Centrality:** KADABRA (from KADABRA is an ADaptive Algorithm for Betweenness via Random Approximation)
 Time Complexity: m^(0.5 + O(1))  
 Inputs: directed unweighted graph  
