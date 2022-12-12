@@ -1,5 +1,15 @@
 # Project Summary
+# Contributors
+Sambuddha Biswas and Mia Erdenebileg
 
+# Overview
+
+Our project looks at the wikipedia dataset obtained from http://snap.stanford.edu/data/twitch-social-networks.html. The undirected, unweighted dataset is given through a CSV file and a text, and the data format is __. Our goal was to write a program to find the shortest path between wikipedia articles and find the betweenness centrality of wikipedia.
+
+Our presentation video: __
+
+To compile the code we use the clang++ compiler. The command for compilig is:
+``` clang++ main.cpp BFS.cpp centrality.cpp -o Wiki ```
 
 # Repository Layout
 
