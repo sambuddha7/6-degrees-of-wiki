@@ -16,4 +16,7 @@ class Graph {
         int size() {
             return l.size();
         }
+        list<Node*> getNeighbors(Node* node) {
+            return l[node];
+        }
 };
