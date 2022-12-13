@@ -21,6 +21,9 @@ vector<vector<string> > file_to_vector_csv(const std::string & filename){
         }
         to_return.push_back(vect);
     }
+    for (vector<string> & i : to_return) {
+        i[1] = brackTrim(i[1]);
+    }
     
     return to_return;
 }
@@ -47,13 +50,21 @@ Graph vector_to_graph(vector<vector<string> > csv, vector<vector<string> > txt) 
         id_to_name[vect[0]] = vect[1];
     }
     for (vector<string> vect : txt) {
-        Node node_one(id_to_name[vect[0]]);
-        Node node_two(id_to_name[vect[1]]);
-        cout << &node_one << endl;
-        g.addEdge(&node_one, &node_two);
+        Node* node_one = new Node(id_to_name[vect[0]]);
+        Node* node_two = new Node(id_to_name[vect[1]]);
+        g.addEdge(node_one, node_two);
+        delete node_one;
+        delete node_two;
     }
     return g;
 }
+// EulerGraph vector_to_euler(vector<vector<string> > txt) {
+//     EulerGraph g(txt.size());
+//     for (vector<string> i : txt) {
+//         g.addEdge(stoi(i[0]), stoi(i[1]));
+//     }
+//     return g;
+// }
 
 std::string TrimRight(const std::string & str) {
     std::string tmp = str;
@@ -78,4 +89,7 @@ void SplitString(const std::string & str1, char sep, std::vector<std::string> &f
         str.erase(0,pos+1);  
     }
     fields.push_back(str);
+}
+std::string brackTrim(std::string & str) {
+    return str.substr(1, str.size() - 2);
 }
