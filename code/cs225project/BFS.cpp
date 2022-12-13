@@ -27,14 +27,24 @@ public:
     }
 };
 class Graph {
-    
     public:
         unordered_map<Node*, list<Node*> > l;
+        unordered_map<string, Node*> s;
         void addEdge(Node* x, Node* y) {
             l[x].push_back(y);
+            s[x->name] = x;
+            s[y->name] = y;
         }
+        
+
         int size() {
             return l.size();
+        }
+        unordered_map<Node*, list<Node*> > getAdjacencyList() {
+            return l;
+        } 
+        unordered_map<string, Node*> getString() {
+            return s;
         }
         list<Node*> getNeighbors(Node* node) {
             return l[node];
@@ -91,7 +101,7 @@ public:
         Node* node = end;
         //start.prev is always null 
          //so loop until node->prev is null to trace route
-        //finding spaning tree
+        //finding spanning tree
         while (node != nullptr) {
             route.push_front(node);
             node = node->prev;
