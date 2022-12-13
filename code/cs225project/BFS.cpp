@@ -1,7 +1,11 @@
+
+#pragma once
 #include <iostream>
 #include <queue>
 #include<list>
 #include <vector>
+#include <unordered_map>
+#include <string>
 using namespace std;
 
 
@@ -22,15 +26,29 @@ public:
         v->neighbors.push_back(this);
     }
 };
-
+class Graph {
+    
+    public:
+        unordered_map<Node*, list<Node*> > l;
+        void addEdge(Node* x, Node* y) {
+            l[x].push_back(y);
+        }
+        int size() {
+            return l.size();
+        }
+        list<Node*> getNeighbors(Node* node) {
+            return l[node];
+        }
+};
 class BFS {
     Node* start;
     Node* end;
-
+    Graph graph;
 public:
-    BFS(Node* start, Node* end) {
+    BFS(Node* start, Node* end, Graph g) {
         this->start = start;
         this->end = end;
+        graph = g;
     }
 
     vector<string> findPath() {
@@ -48,8 +66,8 @@ public:
             Node* current_node = Queue.front();
             Queue.pop();
             //Loop through neighbors nodes to find the 'end' node
-
-            for (Node* node : current_node->neighbors) {
+            //Node* node : current_node->neighbors
+            for (Node* node : graph.getNeighbors(current_node)) {
                 if (!node->visited) {
                     //Visit and add neighbor nodes to the queue
 
