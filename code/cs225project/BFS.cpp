@@ -10,11 +10,11 @@ class Node {
 public:
     //Adjacency List of the vertex
     list<Node*> neighbors;
-    char name;
+    string name;
     bool visited = false;
     Node* prev = nullptr;
 
-    Node(char name) { this->name = name; }
+    Node(string name) { this->name = name; }
 
     //Method to connect vertices
     void addNeighbour(Node* v) {
@@ -33,7 +33,7 @@ public:
         this->end = end;
     }
 
-    vector<char> findPath() {
+    vector<string> findPath() {
 
         queue<Node*> Queue;
         bool reached_end = false;
@@ -68,7 +68,7 @@ public:
     }
 
     //Function to trace back route
-    vector<char> trace_route() {
+    vector<string> trace_route() {
         list<Node*> route;
         Node* node = end;
         //start.prev is always null 
@@ -80,7 +80,7 @@ public:
         }
         //Display the spaning  and shortest path
         // cout << "Shortest Path Between Nodes is" << endl;
-        vector<char> to_return;
+        vector<string> to_return;
         for (Node* n : route) {
             // cout << n->name << " ";
             to_return.push_back(n->name);
