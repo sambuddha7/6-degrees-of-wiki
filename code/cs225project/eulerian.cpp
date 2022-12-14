@@ -177,15 +177,15 @@ public:
         } else return false; 
 
     }
-    // void test(EulerGraph &g) {
-    //     int res = g.isEulerian();
-    //     if (res == 0)
-    //         cout << "graph is not Eulerian\n";
-    //     else if (res == 1)
-    //         cout << "graph has a Euler path\n";
-    //     else
-    //         cout << "graph has a Euler cycle\n";
-    // }
+    void testEuler(EulerGraph &g) {
+        int res = g.isEulerian();
+        if (res == 0)
+            cout << "graph is not Eulerian\n";
+        else if (res == 1)
+            cout << "graph has a Euler path\n";
+        else
+            cout << "graph has a Euler cycle\n";
+    }
 };
 
 
