@@ -47,14 +47,11 @@ Graph vector_to_graph(vector<vector<string> > csv, vector<vector<string> > txt) 
     Graph g;
     unordered_map<string, string> id_to_name;
     for (vector<string> vect : csv) {
+        
         id_to_name[vect[0]] = vect[1];
     }
     for (vector<string> vect : txt) {
-        Node* node_one = new Node(id_to_name[vect[0]]);
-        Node* node_two = new Node(id_to_name[vect[1]]);
-        g.addEdge(node_one, node_two);
-        delete node_one;
-        delete node_two;
+        g.addEdge(id_to_name[vect[0]], id_to_name[vect[1]]);
     }
     return g;
 }
