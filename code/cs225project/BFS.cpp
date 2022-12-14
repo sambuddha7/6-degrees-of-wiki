@@ -6,6 +6,7 @@
 #include <vector>
 #include <unordered_map>
 #include <string>
+#include <stack>
 using namespace std;
 
 
@@ -29,13 +30,18 @@ public:
 class Graph {
     public:
         unordered_map<Node*, list<Node*> > l;
-        unordered_map<string, Node*> s;
+        unordered_map<string, list<string> > new_l;
+        // unordered_map<string, Node*> s;
         void addEdge(Node* x, Node* y) {
             l[x].push_back(y);
-            s[x->name] = x;
-            s[y->name] = y;
+            l[y].push_back(x);
+            // s[x->name] = x;
+            // s[y->name] = y;
         }
-        
+        void addEdge(string x, string y) {
+            new_l[x].push_back(y);
+            new_l[y].push_back(x);
+        }
 
         int size() {
             return l.size();
@@ -43,13 +49,58 @@ class Graph {
         unordered_map<Node*, list<Node*> > getAdjacencyList() {
             return l;
         } 
-        unordered_map<string, Node*> getString() {
-            return s;
-        }
+        // unordered_map<string, Node*> getString() {
+        //     return s;
+        // }
         list<Node*> getNeighbors(Node* node) {
             return l[node];
         }
+        bool BFString(string source, string dest, unordered_map<string, string>& parent) {
+            queue<string> q;
+            // bool visited[new_l.size()];
+            unordered_map<string, bool> visited;
+            for (auto i : new_l) {
+                visited[i.first] = false;
+                parent[i.first] = "";
+            }
+            q.push(source);
+            visited[source] = true;
+            while (!q.empty()) {
+                string temp = q.front();
+                // cout << "temp: " << temp << endl;
+                q.pop();
+                for (string k : new_l[temp]) {
+                    
+                    if (visited[k] == false) {
+                        q.push(k);
+                        visited[k] = true;
+                        parent[k] = temp;
+                        if (k == dest) return true;
+                    }
+                } 
+            }
+            return false;
+        }
+        void printPath(string source, string dest) {
+            unordered_map<string, string> parent;
+            if (BFString(source, dest, parent) == false) {
+                cout << "No possible path" << endl;
+            }
+            stack<string> s;
+            // cout << "dest " <<dest << endl;
+            // cout << "parent " << parent[dest] << endl;
+            while (parent[dest] != "") {
+                s.push(dest);
+                dest = parent[dest];
+            }
+            cout << source ;
+            while (!s.empty()) {
+                cout  << "->" << s.top();
+                s.pop();
+            }
+        }
 };
+
 class BFS {
     Node* start;
     Node* end;
