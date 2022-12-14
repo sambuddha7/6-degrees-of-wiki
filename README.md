@@ -27,8 +27,8 @@ This contains all of our data, as well as preprocessing code used to read it int
 
 ## Testing
 
-All testing was done through main.cpp. All the test cases are in tests.cpp
-## BFS for shortest path (Dijkstra’s)
+All testing was done through main.cpp. All the test cases are in test.cpp
+## BFS for shortest path 
 
 
 ### Files: BFS.cpp
