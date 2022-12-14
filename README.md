@@ -9,7 +9,7 @@ To compile the code we use the clang++ compiler. The command for compiling is:
 ``` clang++ main.cpp BFS.cpp dataparsing.cpp eulerian.cpp -o wiki ```
 
 And to get the output on the console we input two articles such as “Hitler” , “Pikachu”
-```./wiki Hitler Pikachu	```
+```./wiki "Hitler" "Pikachu"	```
 
 ### Presentation video:
 
