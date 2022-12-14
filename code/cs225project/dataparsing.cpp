@@ -58,13 +58,13 @@ Graph vector_to_graph(vector<vector<string> > csv, vector<vector<string> > txt) 
     }
     return g;
 }
-// EulerGraph vector_to_euler(vector<vector<string> > txt) {
-//     EulerGraph g(txt.size());
-//     for (vector<string> i : txt) {
-//         g.addEdge(stoi(i[0]), stoi(i[1]));
-//     }
-//     return g;
-// }
+EulerGraph vector_to_euler(vector<vector<string> > txt) {
+    EulerGraph g(txt.size());
+    for (vector<string> i : txt) {
+        g.addEdge(stoi(i[0]), stoi(i[1]));
+    }
+    return g;
+}
 
 std::string TrimRight(const std::string & str) {
     std::string tmp = str;
