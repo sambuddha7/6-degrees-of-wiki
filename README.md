@@ -6,7 +6,7 @@ Sambuddha Biswas and Mia Erdenebileg
 
 Our project looks at the wikipedia dataset obtained from http://snap.stanford.edu/data/twitch-social-networks.html. The undirected, unweighted dataset is given through a CSV file and a text, and the data format is an unordered map with a node mapping to an adjacency list . Our goal was to write a program to find the shortest path between wikipedia articles and to check whether the graph contains a eulerian cycle or path to check the efficiency of traversals such that the same node isn’t traversed over twice.
 To compile the code we use the clang++ compiler. The command for compiling is:
-``` clang++ main.cpp BFS.cpp dataparsing.cpp eulerian.cpp -o wiki ```
+``` clang++ main.cpp BFS.cpp dataparsing.cpp eulerian.cpp test.cpp -o wiki ```
 
 And to get the output on the console we input two articles such as “Hitler” , “Pikachu”
 ```./wiki "Hitler" "Pikachu"	```
