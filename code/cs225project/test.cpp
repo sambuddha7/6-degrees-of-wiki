@@ -45,51 +45,56 @@ class Test {
 
             // testing for eulerian in different graphs
             EulerGraph g1(5);
-    g1.addEdge(1, 0);
-    g1.addEdge(0, 2);
-    g1.addEdge(2, 1);
-    g1.addEdge(0, 3);
-    g1.addEdge(3, 4);
-    g1.testEuler(g1);
-    g1.printEulerTrail(); 
+            g1.addEdge(1, 0);
+            g1.addEdge(0, 2);
+            g1.addEdge(2, 1);
+            g1.addEdge(0, 3);
+            g1.addEdge(3, 4);
+            string s1 = g1.testEuler(g1);
+            assert(s1 == "Euler path");
+            g1.printEulerTrail(); 
 
 
 
-    EulerGraph g2(5);
-    g2.addEdge(1, 0);
-    g2.addEdge(0, 2);
-    g2.addEdge(2, 1);
-    g2.addEdge(0, 3);
-    g2.addEdge(3, 4);
-    g2.addEdge(4, 0);
-    g2.testEuler(g2);
-    g2.printEulerTrail(); 
- 
-    EulerGraph g3(5);
-    g3.addEdge(1, 0);
-    g3.addEdge(0, 2);
-    g3.addEdge(2, 1);
-    g3.addEdge(0, 3);
-    g3.addEdge(3, 4);
-    g3.addEdge(1, 3);
-    g3.testEuler(g3);
-    g3.printEulerTrail(); 
- 
-    // EulerGraph with 3 vertices connected in the form of cycle
-    EulerGraph g4(3);
-    g4.addEdge(0, 1);
-    g4.addEdge(1, 2);
-    g4.addEdge(2, 0);
-    g4.testEuler(g4);
-    g4.printEulerTrail(); 
+            EulerGraph g2(5);
+            g2.addEdge(1, 0);
+            g2.addEdge(0, 2);
+            g2.addEdge(2, 1);
+            g2.addEdge(0, 3);
+            g2.addEdge(3, 4);
+            g2.addEdge(4, 0);
+            string s2 = g2.testEuler(g2);
+            g2.printEulerTrail(); 
+            assert(s2 == "Euler cycle");
+
+            EulerGraph g3(5);
+            g3.addEdge(1, 0);
+            g3.addEdge(0, 2);
+            g3.addEdge(2, 1);
+            g3.addEdge(0, 3);
+            g3.addEdge(3, 4);
+            g3.addEdge(1, 3);
+            string s3 = g3.testEuler(g3);
+            g3.printEulerTrail(); 
+            assert(s3 == "not");
+        
+            // EulerGraph with 3 vertices connected in the form of cycle
+            EulerGraph g4(3);
+            g4.addEdge(0, 1);
+            g4.addEdge(1, 2);
+            g4.addEdge(2, 0);
+            string s4 = g4.testEuler(g4);
+            g4.printEulerTrail(); 
+            assert(s4 == "Euler cycle");
 
 
- 
-    // Let us create a EulerGraph with all vertices
-    // with zero degree
-    EulerGraph g5(3);
-    g5.testEuler(g5);
-    g5.printEulerTrail();
+        
+            // Let us create a EulerGraph with all vertices
+            // with zero degree
+            EulerGraph g5(3);
+            string s5 = g5.testEuler(g5);
+            g5.printEulerTrail();
+            assert(s5 == "Euler cycle");
         return 0;
     }
 };
