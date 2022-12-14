@@ -5,6 +5,8 @@
 #include <algorithm> 
 using namespace std;
  
+// // A class that represents an undirected graph
+
 class EulerGraph
 {
     // An array of adjacency lists
@@ -29,7 +31,7 @@ public:
         arr[u].push_back(v);
     }
 
-    // Remove edge u-v from graph. Replace adjcent vertex value with -1. 
+    // Remove an edge
     void removeEdge(int u, int v) { 
         // Find v in adjacency list of u and replace it with -1 
         list<int>::iterator iter_v = find(arr[u].begin(), arr[u].end(), v); 
@@ -70,10 +72,6 @@ public:
     }
     
     // Method to check if this EulerGraph is Eulerian or not
-    /* The function returns
-   0 --> If EulerGraph is not Eulerian
-   1 --> If EulerGraph has an Euler path (Semi-Eulerian)
-   2 --> If EulerGraph has an Euler Circuit (Eulerian)  */
     int isEulerian() {
         // Check if all non-zero degree vertices are connected
         if (isConnected() == false)
@@ -95,8 +93,7 @@ public:
         return (odd)? 1 : 2;
     }
 
-    /* The main function that print Eulerian Trail. It first finds an odd 
-   degree vertex and then calls printEulerHelper() to print the path */
+    // Methods to print Eulerian tour
     void printEulerTrail() {
         // Find a vertex with odd degree 
         int u = 0; 
@@ -158,7 +155,7 @@ public:
             }
         }
         // Check if u-v is a bridge 
-
+        
         // vertCount1 = Count of vertices reachable from u 
         bool visited[N]; 
         memset(visited, false, N); 
@@ -180,21 +177,48 @@ public:
         } else return false; 
 
     }
-
-    //tester 
-    void testEuler(EulerGraph &g) {
+    string testEuler(EulerGraph &g) {
         int res = g.isEulerian();
-        if (res == 0)
-            cout << "graph is not Eulerian\n";
-        else if (res == 1)
+        if (res == 0) {
+             cout << "graph is not Eulerian\n";
+            return "not";
+        }
+        else if (res == 1) {
             cout << "graph has a Euler path\n";
+            return "Euler path";
+        }
+            
         else
             cout << "graph has a Euler cycle\n";
+            return "Euler cycle";
     }
 };
+
+
+
+
+// The function to check the validity of the edge u-v which can be considered as next edge in Euler Trail 
 
  
 
 
+// Remove edge u-v from graph. Replace adjcent vertex value with -1. 
+
+ 
+
+ 
+ 
+/* The function returns
+   0 --> If EulerGraph is not Eulerian
+   1 --> If EulerGraph has an Euler path (Semi-Eulerian)
+   2 --> If EulerGraph has an Euler Circuit (Eulerian)  */
+
+ 
+// Function to run test cases
+
+
+/* The main function that print Eulerian Trail. It first finds an odd 
+   degree vertex (if there is any) and then calls printEulerHelper() 
+   to print the path */
 
 
