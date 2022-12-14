@@ -8,6 +8,7 @@
 #include "dataparsing.h"
 #include <map>
 #include "eulerian.cpp"
+#include "test.cpp"
 using namespace std;
 int main(int argc, char* argv[]) {
     if (argc != 3) {
@@ -23,13 +24,7 @@ int main(int argc, char* argv[]) {
     vector<vector<string> > txt = file_to_vector_txt("dataset/test1.txt");
     Graph g = vector_to_graph(csv, txt);
     g.printPath(start_node, end_node);
-    // int res = g1.isEulerian();
-    //     if (res == 0)
-    //         cout << "graph is not Eulerian\n";
-    //     else if (res == 1)
-    //         cout << "graph has a Euler path\n";
-    //     else
-    //         cout << "graph has a Euler cycle\n";
-    // g1.printEulerTrail(); 
+    Test t;
+    int testt = t.test();
     return 0;
 }
